@@ -56,10 +56,11 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
   },
 
   refreshPokemon: function (callback) {
+    //error thrown here because this.pokemon is an empty object at first
     this.pokemon.fetch({
       success: (function() {
         this.render();
-        callback();
+        if (callback) {callback()};
       }).bind(this)
     })
     return this;
